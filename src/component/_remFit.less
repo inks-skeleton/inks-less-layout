@@ -1,0 +1,15 @@
+// out:false,main: ../LayoutSimple.less
+
+// rem html 根字体适配
+.TxtSize(@w, @limit) when (@w > @limit) { 
+  .TxtSize((@w - @fit_spacing),@limit);
+  @media (min-width: unit((@w - @fit_spacing),px)) and (max-width: unit(@w,px)) {
+    html { font-size: unit(@w/@full_scale,px) }
+  }
+}
+.TxtSize(@w, @limit) when (@w <= @limit) { 
+  @media (max-width: unit(@w,px)) {
+    html { font-size: unit(@w/@full_scale,px) }
+  }
+}
+.TxtSize(extract(@fit_range, 1),extract(@fit_range, 2));

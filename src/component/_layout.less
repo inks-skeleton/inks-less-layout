@@ -1,0 +1,14 @@
+// out: false, main: ../LayoutSimple.less
+
+// 布局
+.ly-box { box-sizing: border-box; }
+.ly-top-ib { .inBlock(); vertical-align: top; }
+.ly-cen-ib { .inBlock(); vertical-align: middle; }
+.ly-fl { float:left; }
+.ly-fr { float:right; }
+.ly-wh100 { width: 100%; height: 100%; }
+.ly-wh100-b { display: block; &:extend(.u-wh100);}
+
+.img-responsive { width: auto; height: auto; max-width: 100%; max-height: 100%; }
+.img-responsive-w100 { width: 100%; height: auto; max-height: 100%; }
+.img-responsive-h100 { width: auto; max-width: 100%; height: 100%; }

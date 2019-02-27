@@ -1,0 +1,28 @@
+// out:false,main: ../LayoutSimple.less
+
+// 默认字体
+@default_fs:14px; // size
+@default_fc:#555;  // color
+@default_ffamily: Arial, Helvetica, sans-serif; // family
+
+// 默认body，html
+@default_bg:#fff; // 默认body背景
+@default_w:100%;
+@default_h:100%;
+
+// 默认链接
+@default_linkC:#009;
+@default_visitedC:#800080;
+@default_hoverC:#c00;
+.default_hover(){ text-decoration: underline };
+
+// 栅格化布局
+@screen_lg:960px;
+@screen_md:720px;
+@screen_sm:540px;
+@screen_xs:360px;
+
+// rem html 根字体适配
+@full_scale:720/100; // 满屏比例，默认值720/100，意为当屏幕为720px时html根字体大小应为100px
+@fit_spacing:20; // 适配间距，即每隔多少px进行一次适配
+@fit_range:960,320; // 适配范围，由于PC对rem的支持性不高，因此仅对960-360之间的移动端进行适配

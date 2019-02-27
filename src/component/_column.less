@@ -1,0 +1,34 @@
+// out:false,main: ../LayoutSimple.less
+
+// 栅格化布局
+@grid: 12;
+.Col(@i) when (@i > 0) { .Col((@i - 1));
+  [class*= 'col-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), '%'); }
+}
+.Col(@i,@type) when (@i > 0) { .Col((@i - 1),@type);
+  [class*= 'col-@{type}-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), '%'); }
+}
+
+.row { margin: 0 auto; font-size: 0;
+    &::after { content: ""; display: block; clear: both; float: none; padding: 0; margin: 0; width: 100%; height: 0.01px; border: 0.01px solid transparent; overflow: hidden; }
+    [class*= 'col-'][class*= '-fl'] { &:extend(.u-fl); }
+    [class*= 'col-'][class*= '-fr'] { &:extend(.u-fr); }
+    [class*= 'col-'][class*= '-mid'] { &:extend(.u-cen-ib); }
+    .Col(@grid);
+}
+.hidden { display: none; }
+.visible { display: block; }
+.visible-ib { .inBlock(true); }
+
+.ColMedia(@w, @type) {
+  @media (max-width:@w) {
+    .row { .Col(@grid,@type); }
+    .hidden-@{type} { display: none!important;}
+    .visible-@{type} { display: block!important; }
+    .visible-ib-@{type} { .inBlock(true); }
+  }
+}
+.ColMedia(@screen_lg, lg);
+.ColMedia(@screen_md, md);
+.ColMedia(@screen_sm, sm);
+.ColMedia(@screen_xs, xs);
