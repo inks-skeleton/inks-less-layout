@@ -1,4 +1,4 @@
-# JQ_ScrollBar
+# LayoutSimple
 LayoutSimple简易CSS布局框架
 [LayoutSimple v1.0.0 Demo](http://htmlpreview.github.com/?https://github.com/qc-web-y/LessTool/blob/master/demo/demo.html"LayoutSimple v0.1.0 Demo")
 
