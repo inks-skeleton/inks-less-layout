@@ -3,7 +3,7 @@ LayoutSimple简易CSS布局框架
 [LayoutSimple v1.0.0 Demo](http://htmlpreview.github.com/?https://github.com/qc-web-y/LessTool/blob/master/demo/demo.html "LayoutSimple v0.1.0 Demo")
 
 ## 介绍
-- 项目地址：[LayoutSimple v1.0.0]("https://github.com/qc-web-y/LessTool"LayoutSimple v1.0.0")
+- 项目地址：[LayoutSimple v1.0.0](https://github.com/qc-web-y/LessTool "LayoutSimple v1.0.0")
 
 ## 使用方法
 > [方法一：自由度较高，需要掌握有less功底]
