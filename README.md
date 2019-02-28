@@ -13,7 +13,7 @@ LayoutSimple简易CSS布局框架
 
 > [方法二：自由度中等，需要掌握一些less基础，这个可以速成，详见我的博客[cnblogs leona-d](https://www.cnblogs.com/leona-d/category/940013.html "cnblogs leona-d")]
 - 1.下载项目中的src文件
-- 2.打开config中的_default.less根据<a href="#linkConfig">config/_default.less</a>进行配置
+- 2.打开config中的_default.less根据 config/_default.less 进行配置
 - 3.编译LayoutSimple.less文件（这里推荐使用vscode打开项目并安装easy less进行编译）
 - 4.编译成功，将生成的LayoutSimple.css 或 LayoutSimple.min.css放入自己的项目中直接使用即可
 
