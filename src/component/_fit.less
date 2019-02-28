@@ -1,7 +1,18 @@
 // out:false,main: ../LayoutSimple.less
 
+// PC小屏及移动端适配
+@media (max-width:1200px) {
+  @PageLayout1200DownFit();
+}
+
+// 移动端适配
+@media (max-width:960px) {
+  @Init960DownFit();
+  @FontH960DownFit();
+}
+
 // rem html 根字体适配
-.TxtSize(@w, @limit) when (@w > @limit) { 
+.TxtSize(@w, @limit) when (@w > @limit) {
   .TxtSize((@w - @fit_spacing),@limit);
   @media (min-width: unit((@w - @fit_spacing),px)) and (max-width: unit(@w,px)) {
     html { font-size: unit(@w/@full_scale,px) }

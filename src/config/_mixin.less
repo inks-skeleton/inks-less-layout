@@ -2,8 +2,13 @@
 
 // ie7 and up [border-radius]
 @url: '../../../dist';
-.borderR(@r) { border-radius: @r; -webkit-border-radius: @r; -moz-border-radius: @r; behavior: url('@{url}/js/PIE-2.0beta1/PIE.htc'); }
+.BorderR(@r) { border-radius: @r; -webkit-border-radius: @r; -moz-border-radius: @r; behavior: url('@{url}/js/PIE-2.0beta1/PIE.htc'); }
 
 // ie7 and up [display: inline-block]
-.inBlock() { display: inline-block; *zoom: 1; *display: inline; }
-.inBlock(@important) when (@important=true) { display: inline-block!important; *zoom: 1; *display: inline!important; }
+.InBlock() { display: inline-block; *zoom: 1; *display: inline; }
+.InBlock(@important) when (@important=true) { display: inline-block!important; *zoom: 1; *display: inline!important; }
+
+.PaddingLR(@val) { padding-left: @val; padding-right: @val; }
+.PaddingTB(@val) { padding-top: @val; padding-bottom: @val; }
+.MarginLR(@val) { margin-left: @val; margin-right: @val; }
+.MarginTB(@val) { margin-top: @val; margin-bottom: @val; }

@@ -1,8 +1,21 @@
 // out: false, main: ../LayoutSimple.less
 
+
+.jumbotron { .PaddingLR(20px); }
+.container { &:extend(.ly-box); margin: 0 auto; width: 1200px; height: auto; }
+
+@PageLayout1200DownFit: {
+    .container { .PaddingLR(20px); width:100%; }
+};
+
+@PageLayout960DownFit: {
+    .jumbotron { .PaddingLR(20/@rem); }
+    .container { .PaddingLR(20/@rem); }
+};
+
 .ly-box { box-sizing: border-box; }
-.ly-top-ib { .inBlock(); vertical-align: top; }
-.ly-cen-ib { .inBlock(); vertical-align: middle; }
+.ly-top-ib { .InBlock(); vertical-align: top; }
+.ly-cen-ib { .InBlock(); vertical-align: middle; }
 .ly-fl { float:left; }
 .ly-fr { float:right; }
 .ly-wh100 { width: 100%; height: 100%; }

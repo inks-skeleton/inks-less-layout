@@ -5,7 +5,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 body,a,button,input,select,textarea,td,th,caption { font-size:@default_fs; font-family: @default_ffamily; color:@default_fc; }
 h1, h2, h3, h4, h5, h6,address, caption, cite, code, dfn, em, strong, th, var { font-weight:normal; }
 address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; }
-body, html { width: @default_w; height: @default_h; }
+body, html { width: @default_w; min-width: @default_min_w; max-width: @default_max_w; height: @default_h; }
 body { background: @default_bg; }
 html {overflow-y: scroll;} 
 ol,ul, li { list-style: none; }
@@ -13,7 +13,7 @@ ol,ul, li { list-style: none; }
 a { text-decoration: none; 
     &:link{ color:@default_linkC; } 
     &:visited{ color:@default_visitedC; } 
-    &:hover,&:active,&:focus{ color: @default_hoverC; .default_hover(); } 
+    &:hover,&:active,&:focus{ @default_selected(); } 
 }
 
 // 禁用ios点击链接或者带有执行js的btn等灰色透明效果
@@ -27,4 +27,8 @@ input[type='button'], input[type='submit'], button, select, a { cursor: pointer;
 
 // 禁用ios中disabled透明效果
 input:disabled { -webkit-opacity: 1; }
+
+@Init960DownFit: {
+    body,a,button,input,select,textarea,td,th,caption { font-size:@default_fs_mobile;}
+};
 

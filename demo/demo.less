@@ -1,0 +1,32 @@
+// out: demo.css,compress:false
+
+@config:'../src/config/';
+@component:'../src/component/';
+@import (reference) '@{config}_default.less';
+@import (reference) '@{config}_mixin.less';
+
+.diy-header { .BorderR(10px); margin: 20px; padding-bottom: 20px; background-color: #eee; }
+.diy-wrap { padding-bottom: 10px; }
+.diy-title { border-bottom: 1px solid #6c87e8; color: #7facf3; cursor: pointer;
+    &:hover { color: #114698 ; }
+}
+.diy-list li { min-height: 45px; line-height: 45px; 
+    &.diy-line { .MarginTB(5px); width: 100%; height: 2px; min-height: auto; line-height: normal; background-color: #eee; }
+}
+.diy-mark { line-height: 25px; }
+.diy-spacing { .PaddingLR(10px); }
+.js-details { .PaddingLR(20px); height: 0; overflow: hidden; }
+.js-details-open { height: auto; overflow: visible; }
+.diy-footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #114698; }
+
+@media (max-width:960px){
+    .diy-header { .BorderR(10/@rem); margin: 20/@rem; padding-bottom: 20/@rem; }
+    .diy-title { border-bottom: 2/@rem }
+    .diy-wrap { padding-bottom: 10/@rem; }
+    .diy-list li { min-height: 60/@rem; line-height: 60/@rem; }
+    .diy-mark { line-height: 45/@rem; }
+    .diy-spacing { .PaddingLR(10/@rem); }
+    .diy-line { .MarginTB(5/@rem); height: 2/@rem; }
+    .js-details { .PaddingLR(20/@rem); }
+    .diy-footer { margin-top: 20/@rem; padding-top: 20/@rem; border-top-width: 2/@rem; }
+}

@@ -1,1 +1,32 @@
 // out: false, main: ../LayoutSimple.less
+
+@end_h:1;
+.FontTitle(@start_fs, @unit, @start_h:6) when ((@unit = px) and (@start_h >= @end_h)) {
+    .FontTitle(@start_fs + @title_spacing, @unit, @start_h - 1);
+    h@{start_h} { .PaddingTB(@start_fs - 10px); font-size: unit(@start_fs,@unit); line-height: unit(@start_fs*1.6,@unit); }
+    .txt-h@{start_h} { font-size: unit(@start_fs,@unit); }
+}
+.FontTitle(@start_fs, @unit, @start_h:6) when ((@unit = rem) and (@start_h >= @end_h)) {
+    .FontTitle(@start_fs + @title_spacing, @unit, @start_h - 1);
+    h@{start_h} { .PaddingTB(@start_fs/@rem); font-size: @start_fs/@rem; line-height: @start_fs*1.6/@rem; }
+    .txt-h@{start_h} { font-size: @start_fs/@rem; }
+}
+
+.FontTitle(@title_start,px);
+.txt-samll {font-size: 12px;}
+.txt-mini {font-size: 10px;}
+
+@FontH960DownFit: {
+    .FontTitle(@title_start_mobile,rem);
+    .txt-samll {font-size: 24/@rem;}
+    .txt-mini {font-size: 22/@rem;}
+};
+
+.txt-blod { font-weight: bold; }
+.txt-normal { font-weight: normal; }
+.txt-light { font-weight: lighter; }
+.txt-l { text-align: left; }
+.txt-c { text-align: center; }
+.txt-r { text-align: right; }
+.txt-ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.txt-nowrap { white-space:nowrap; }
