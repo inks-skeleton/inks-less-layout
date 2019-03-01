@@ -1,4 +1,4 @@
-// out: demo.css,compress:false
+// out: demo.min.css,compress:true
 
 @config:'../src/config/';
 @component:'../src/component/';
@@ -18,6 +18,21 @@
 .js-details { .PaddingLR(20px); height: 0; overflow: hidden; }
 .js-details-open { height: auto; overflow: visible; }
 .diy-footer { margin-top: 20px; padding-top: 20px; border-top: 2px solid #114698; }
+
+.diy-cen-hd { .PaddingTB(10px);  }
+.diy-cen-line { .MarginTB(10px); width: 100%; height: 2px; background-color: #eee; }
+.diy-cen-parent { margin-bottom: 10px; padding: 5px; border: 1px solid #f19d64; 
+    &.parent-h { .PaddingLR(5px); height: 25px; line-height: 25px; }
+    &.parent-lh { line-height: 25px; }
+    &.parent-ib { display: inline-block; }
+    &.parent-inline { display: inline; }
+    .diy-cen-child  { .PaddingLR(10px); background-color: #f19d64; 
+        &.child-h { display: inline-block; height: 20px; line-height: 20px; }
+        &.child-ib { display: inline-block; }
+        &.child-son { background-color:#ffd100; }
+    }
+}
+.diy-txt-red { color: red; }
 
 @media (max-width:960px){
     .diy-header { .BorderR(10/@rem); margin: 20/@rem; padding-bottom: 20/@rem; }

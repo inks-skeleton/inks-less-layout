@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>LayoutSimple Demo 之-浅谈如何将多个inline或inline-block元素垂直居中</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="../dist/LayoutSimple.min.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="../dist/LayoutSimple.css" /> -->
+    <link type="text/css" rel="stylesheet" href="demo.min.css?n=123" />
+</head>
+
+<body>
+    <div class="jumbotron diy-header">
+        <h1>Css-浅谈如何将多个inline或inline-block元素垂直居中</h1>
+        <h6>一直以来，前端开发过程中本人遇到最多，最烦的问题之一是元素如何垂直居中，发现开发过程中，元素的垂直居中一直是个很大的麻烦事，经常发现PC端和电脑模拟元素都垂直居中了，但是遇到移动端真机总是会出现层次不穷的问题，让人头大不已。因此我决定好好研究下究竟如何正确让元素垂直居中。</h6>
+        <h6>下面是我研究的一些心得：</h6>
+    </div>
+    <div class="container">
+        <h6 class="txt-blod">基础</h6>
+        <div class="diy-wrap">
+            <h5>一、元素父级为"block"，没有固定高度，靠padding等自动撑开高度</h5>
+            <p class="txt-r txt-blod">【小结：元素均会自动垂直居中】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }</p>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }</p>
+                <div class="diy-cen-parent">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }</p>
+                <div class="diy-cen-parent">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                </div>
+                <div class="diy-cen-parent">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }</p>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }</p>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap">
+            <h5>二、元素父级为"block"，有固定高度</h5>
+            <p class="txt-r txt-blod">【小结：需要给父级设置固定行高，如需相对父级垂直居中，行高应与父级高度一致】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-h">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }</p>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }</p>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap">
+            <h5>三、元素父级为"inline-block"，没有固定高度，靠padding等自动撑开高度</h5>
+            <p class="txt-r txt-blod">【小结：与父级为"block"时一样，元素均会自动垂直居中】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }</p>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }</p>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap">
+            <h5>四、元素父级为"inline-block",有固定高度</h5>
+            <p class="txt-r txt-blod">【小结：与父级为"block"时一样，需要给父级设置固定行高，如需相对父级垂直居中，行高应与父级高度一致】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }</p>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }</p>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-parent parent-h parent-ib">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap">
+            <h5>五、元素父级为"inline"，没有固定高度，靠padding等自动撑开高度</h5>
+            <p class="txt-r txt-blod">【小结：与父级为"block"时一样，元素均会自动垂直居中】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-line"></div>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-inline">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-line"></div>
+                <div class="diy-cen-parent parent-inline">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }</p>
+                <div class="diy-cen-parent parent-inline">
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                </div>
+                <div class="diy-cen-line"></div>
+                <div class="diy-cen-parent parent-inline">
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }</p>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+                <div class="diy-cen-line"></div>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    inline元素
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }</p>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib">ib元素</span>
+                </div>
+                <div class="diy-cen-line"></div>
+                <div class="diy-cen-parent parent-inline">
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                    inline元素
+                    <span class="diy-cen-child child-ib child-h">固高ib元素</span>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap diy-txt-red">
+            <h6 class="txt-blod">总结：</h6>
+            <p class="txt-blod">无论父级元素是块级、内联还是内联块级，在没有固定高度的情况下，其下面的子集（无论是内联或内联块级）均会自动垂直居中。在有固定高度的情况下，需要给父级添加行高"line-height"样式即可。</p>
+        </div>
+        <div class="diy-cen-line"></div>
+        <h5 class="txt-blod">多层嵌套</h5>
+        <p>（为了不废话，之后的不再做单独的固定高度影响的演示，只做文字说明）</p>
+        <div class="diy-wrap">
+            <h5>一、元素父父级为"block"，父级为"inline-block"</h5>
+            <p class="txt-blod">【小结：当父父级为"block"时，无论父级元素是块级、内联还是内联块级，在没有固定高度的情况下，其下面的子集（无论是内联或内联块级）均会自动垂直居中。在父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"，这一点与之前的总结基本是一致的。】</p>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集全部为: { display:inline-block; }，自动垂直居中</p>
+                <p class="txt-samll diy-wrap">----父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib child-h">
+                        <div class="diy-cen-child child-son child-ib">ib元素</div>
+                        <div class="diy-cen-child child-son child-ib">ib元素</div>
+                        <div class="diy-cen-child child-son child-ib">ib元素</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline; }，之后为: { display:inline-block; }，自动垂直居中</p>
+                <p class="txt-samll diy-wrap">----父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib">
+                        inline元素
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集第一个为: { display:inline-block; }，之后为: { display:inline; }，自动垂直居中</p>
+                <p class="txt-samll diy-wrap">----父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib">
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                        inline元素
+                        inline元素
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline-block; }，中间穿插: { display:inline; }，自动垂直居中</p>
+                <p class="txt-samll diy-wrap">----父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib">
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                        inline元素
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● 子集前后为: { display:inline; }，中间穿插: { display:inline-block; }，自动垂直居中</p>
+                <p class="txt-samll diy-wrap">----父父级和父级同时或单独添加高度，需要给有固定高度的父父级或父级添加行高"line-height"</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib">
+                        inline元素
+                        <span class="diy-cen-child child-son child-ib">ib元素</span>
+                        inline元素
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap diy-txt-red">
+            <h6 class="txt-blod">总结：</h6>
+            <p class="txt-blod">之后我对元素父父级与父级均为"inline-block"和元素父父级为"inline"，父级为"inline-block"等做了测试，结果发现，无论父父级元素为什么类型，均与之前的总结是一致的，只需要看元素的父级的模式即可。
+            </p>
+        </div>
+        <div class="diy-cen-line"></div>
+        <h5 class="txt-blod">最后，错综复杂（重点）</h5>
+        <div class="diy-wrap">
+            <div>
+                <p class="diy-cen-hd txt-blod">● block[父父级] - inline-block[父级] - 混合[子级]一（解决方案: 子集添加 { vertical-align: middle; }）</p>
+                <p class="txt-samll diy-wrap">----inline-block[父父级]，也是一样的解决方案</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib" style="padding: 20px;">
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:50px; line-height: 50px;">固高ib元素</div>
+                        <div class="diy-cen-child child-son ly-cen-ib">ib元素</div>
+                        inline元素
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● block[父父级] - inline-block[父级] - 混合[子级]二（解决方案: 同上）</p>
+                <p class="txt-samll diy-wrap">----inline-block[父父级]，也是一样的解决方案</p>
+                <div class="diy-cen-parent">
+                    <div class="diy-cen-child child-ib" style="padding: 20px;">
+                        inline元素
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:50px; line-height: 50px;">固高ib元素</div>
+                        <div class="diy-cen-child child-son ly-cen-ib">ib元素</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="diy-cen-hd txt-blod">● inline-block[父父级] - 混合[父级] - 混合[子级]（解决方案: 请右键审查代码查阅，或查看最后总结）</p>
+                <div class="diy-cen-parent parent-ib">
+                    i
+                    <div class="diy-cen-child ly-cen-ib" style="height:60px;">
+                        <div class="ly-ver-cen"></div>
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:50px; line-height: 50px;">固高ib</div>
+                        <div class="diy-cen-child child-son ly-cen-ib">ib</div>
+                        i
+                    </div>
+                    <div class="diy-cen-child ly-cen-ib" style="padding: 10px;">
+                        i
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:20px; line-height: 20px;">固高ib</div>
+                        <div class="diy-cen-child child-son ly-cen-ib">ib</div>
+                    </div>
+                </div>
+                <div class="diy-cen-parent parent-ib">
+                    <div class="diy-cen-child ly-cen-ib" style="height:60px;">
+                        <div class="ly-ver-cen"></div>
+                        <div class="diy-cen-child child-son ly-cen-ib">ib</div>
+                        i
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:50px; line-height: 50px;">固高ib</div>
+                    </div>
+                    i
+                    <div class="diy-cen-child ly-cen-ib" style="padding: 10px;">
+                        <div class="diy-cen-child child-son ly-cen-ib">ib</div>
+                        i
+                        <div class="diy-cen-child child-son ly-cen-ib" style="height:20px; line-height: 20px;">固高ib</div>
+                        
+                    </div>
+                    i
+                </div>
+            </div>
+        </div>
+        <div class="diy-wrap">
+            <h6 class="txt-blod diy-txt-red">总结：</h6>
+            <ul class="diy-list">
+                <li><span class="txt-blod">父父级-父级-子集式 || 父级-子集式：</span>管他父级还是父父级，无固高不用管，有固高加行高</li>
+                <li><span class="txt-blod">父父级-混合父级-混合子集式：</span>什么都别管，先给所有内联块级父子集加{ vertical-align: middle; }样式，还有不对齐的往他前面塞个高度100%的内联块级元素，并添加{ vertical-align: middle; }样式，完美。<span class="txt-blod diy-txt-red">在LayoutSimple中这个提供是这个样式，即.ly-ver-cen</span></li>
+                <li></li>
+                <li>PS：研究之余，发现一个兼容性问题，即当元素为inline时，IOS与除IE外的PC浏览器均显示正常，但是在安卓手机中如果你够仔细你会发现他有2px的padding-bottom，IE中有1px的padding-bottom。不信，你瞧瞧下面这个，坑了吧，当然了这个范围还是将就能够凑合吧，如果比较较真的呢，你就自己想想办法吧！</li>
+                <li>
+                    <div class="diy-cen-parent">
+                        <span class="diy-cen-child">IOS和IE外的PC浏览器查看正常</span>
+                    </div>
+                    <div class="diy-cen-parent">
+                        <span class="diy-cen-child" style="padding-top:2px">安卓手机查看正常</span>
+                    </div>
+                    <div class="diy-cen-parent">
+                        <span class="diy-cen-child" style="padding-top:1px">IE查看正常</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="jumbotron diy-footer">
+        <div class="container txt-c">
+            <ul class="diy-list">
+                <li>欢迎各位小主吐槽：695524015@qq.com（Email）</li>
+                <li>
+                    <a href="https://github.com/qc-web-y">Github: https://github.com/qc-web-y</a> |
+                    <a href="https://www.cnblogs.com/leona-d/">Cnblogs: https://www.cnblogs.com/leona-d/</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

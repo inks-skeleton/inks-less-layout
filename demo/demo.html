@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link type="text/css" rel="stylesheet" href="../dist/LayoutSimple.min.css" />
     <!-- <link type="text/css" rel="stylesheet" href="../dist/LayoutSimple.css" /> -->
-    <link type="text/css" rel="stylesheet" href="demo.css" />
-    <script src="demo.js"></script>
+    <link type="text/css" rel="stylesheet" href="demo.min.css" />
+    <script src="demo.min.js"></script>
 </head>
 <body>
     <div class="jumbotron diy-header">
@@ -104,7 +104,7 @@
         </div>
         <div class="diy-wrap">
             <h5 onclick="detailsControl(this)" class="diy-title">● 文字排版 ●</h5>
-            <h6>提供一些简单与Bootstrap相似的排版</h6>
+            <h6>提供一些与Bootstrap相似的排版</h6>
             <div class="js-details">
                 <ul class="diy-list txt-h6">
                     <li>h1~h6按照config/_default.less中的配置进行循环生成，这里说下循环计算标准：从h6开始，字体依次往上递增6，padding为当前字体大小-10,line-height为当前字体大小*1.6</li>
@@ -130,7 +130,7 @@
         </div>
         <div class="diy-wrap">
             <h5 onclick="detailsControl(this)" class="diy-title">● 简单布局 ●</h5>
-            <h6>简单一些提供前端常用的css布局代码</h6>
+            <h6>提供一些前端常用的css布局代码</h6>
             <div class="js-details">
                 <ul class="diy-list txt-h6">
                     <li>.jumbotron: 超大屏幕，会给左右增加一个20px的paddding，移动端为0.2rem</li>
@@ -149,6 +149,63 @@
                 </ul>
             </div>
         </div>
+        <div class="diy-wrap">
+            <h5 onclick="detailsControl(this)" class="diy-title">● 垂直居中 ●</h5>
+            <h6>浅谈如何将元素垂直居中</h6>
+            <div class="js-details">
+                <ul class="diy-list txt-h6">
+                    <li>一、元素父级为block</li>
+                    <li>
+                        <p>1.使用: { display:inline-block; vertical-align: middle; }</p>
+                        <ul class="diy-cen diy-cen-h">
+                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素一</li>
+                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素二</li>
+                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素三</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>2.元素之前为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
+                        <div class="diy-cen diy-cen-h">
+                            <span class="diy-cen diy-cen-h-el">元素一</span>
+                            <span class="diy-cen diy-cen-h-el">元素二</span>
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素三</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p>3.元素之前与之后为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
+                        <div class="diy-cen diy-cen-h">
+                            <span class="diy-cen diy-cen-h-el">元素一</span>
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素二</span>
+                            <span class="diy-cen diy-cen-h-el">元素三</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p>4.元素之后为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
+                        <div class="diy-cen diy-cen-h">
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素一</span>
+                            <span class="diy-cen diy-cen-h-el">元素二</span>
+                            <span class="diy-cen diy-cen-h-el">元素三</span>
+                        </div>
+                    </li>
+                    <li>
+                        <p>5.元素中间穿插元素inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
+                        <div class="diy-cen diy-cen-h">
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素一</span>
+                            <span class="diy-cen diy-cen-h-el">元素二</span>
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素三</span>
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <p>3.元素为inline-block，父级为inline-block，自动垂直居中</p>
+                        <div class="diy-cen diy-cen-h">
+                            <span class="diy-cen diy-cen-h-el">元素一</span>
+                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素二</span>
+                            <span class="diy-cen diy-cen-h-el">元素三</span>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
         <h6>OK!小主，您的css基本布局已完成，您可以开始尽情创作您的作品了！</h6>
     </div>
     <div class="jumbotron diy-footer">
@@ -160,7 +217,6 @@
                     <a href="https://www.cnblogs.com/leona-d/">Cnblogs: https://www.cnblogs.com/leona-d/</a>
                 </li>
             </ul>
-            
         </div>
     </div>
 </body>

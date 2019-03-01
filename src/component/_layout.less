@@ -16,6 +16,7 @@
 .ly-box { box-sizing: border-box; }
 .ly-top-ib { .InBlock(); vertical-align: top; }
 .ly-cen-ib { .InBlock(); vertical-align: middle; }
+.ly-ver-cen { &:extend(.ly-cen-ib); height: 100%; }
 .ly-fl { float:left; }
 .ly-fr { float:right; }
 .ly-wh100 { width: 100%; height: 100%; }
@@ -24,3 +25,7 @@
 .img-responsive { width: auto; height: auto; max-width: 100%; max-height: 100%; }
 .img-responsive-w100 { width: 100%; height: auto; max-height: 100%; }
 .img-responsive-h100 { width: auto; max-width: 100%; height: 100%; }
+
+.clearfix:after { content: "."; display: block; height:0; clear:both; visibility: hidden; }
+.clearfix { *zoom:1; }
+.clearfixAll { clear: both; float: none; padding: 0; margin: 0; width: 100%; height: 0.01px; border: 0.01px soild transparent; overflow: hidden; }
