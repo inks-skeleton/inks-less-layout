@@ -1,6 +1,7 @@
-# LayoutSimple
-LayoutSimple简易CSS布局框架
-[LayoutSimple v1.0.0 Demo](http://htmlpreview.github.com/?https://github.com/qc-web-y/LessTool/blob/master/demo/demo.html "LayoutSimple v0.1.0 Demo")
+# LayoutSimple简易CSS布局框架
+## Demo
+- [LayoutSimple v1.0.0 Demo 1](http://htmlpreview.github.com/?https://github.com/qc-web-y/LessTool/blob/master/demo/demo.html "LayoutSimple v0.1.0 Demo 1")
+- [LayoutSimple v1.0.0 Demo 2](http://htmlpreview.github.com/?https://github.com/qc-web-y/LessTool/blob/master/demo/demo-ver-cen.html "LayoutSimple v0.1.0 Demo 2")
 
 ## 介绍
 - LayoutSimple 是一款简易的自由度极高的前端响应式布局 CSS 框架，项目使用 LESS 开发，含有一些实用的 LESS Mixin，如果对 LESS 有些功底的朋友可以自由发挥和组合。
