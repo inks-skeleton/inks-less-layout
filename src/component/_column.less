@@ -3,10 +3,10 @@
 // 网站布局
 @grid: 12;
 .Col(@i) when (@i > 0) { .Col((@i - 1));
-  [class*= 'col-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), '%'); }
+  [class*= 'col-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), %); }
 }
 .Col(@i,@type) when (@i > 0) { .Col((@i - 1),@type);
-  [class*= 'col-@{type}-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), '%'); }
+  [class*= 'col-@{type}-@{i}'] { &:extend(.u-top-ib); width: unit(floor(100/@grid * @i), %); }
 }
 
 .row { margin: 0 auto; font-size: 0;

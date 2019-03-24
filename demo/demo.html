@@ -78,9 +78,11 @@
         </div>
         <div class="diy-wrap">
             <h5 onclick="detailsControl(this)" class="diy-title">● 网格布局 ●</h5>
-            <h6>与Bootstrap4基本一致，不知道请自行了解，这里不多介绍！</h6>
+            <h6>与Bootstrap4基本一致，不知道请自行百度，这里不多介绍！</h6>
             <div class="js-details">
                 <ul class="diy-list txt-h6">
+                    <li>首先需要给父元素添加.row的样式</li>
+                    <li class="diy-line"></li>
                     <li>.col- : 针对所有设备</li>
                     <li>.col-lg- : 默认针对960px以下的屏幕</li>
                     <li>.col-md- : 默认针对720px以下的屏幕</li>
@@ -108,6 +110,7 @@
             <div class="js-details">
                 <ul class="diy-list txt-h6">
                     <li>h1~h6按照config/_default.less中的配置进行循环生成，这里说下循环计算标准：从h6开始，字体依次往上递增6，padding为当前字体大小-10,line-height为当前字体大小*1.6</li>
+                    <li>当然会h1~h6也提供字体大小的样式，只需在前面加.txt-（h1~h6）即可得到h1~h6的相关字体大小样式</li>
                     <li>.txt-samll: 12px,移动端为0.24rem</li>
                     <li>.txt-mini: 10px,移动端为0.22rem</li>
                     <li class="diy-line"></li>
@@ -138,13 +141,17 @@
                     <li class="diy-line"></li>
                     <li>.ly-box: 怪异盒子模型，不懂的请自行百度</li>
                     <li>.ly-top-ib: 内联块级垂直靠顶部</li>
+                    <li>.ly-cen-ib: 内联块级垂直居中</li>
+                    <li>.ly-ver-cen: 内联块级或内联元素为使其垂直居中，而在第一个元素应用的样式，具体参考demo2</li>
                     <li>.ly-fl: 左浮动</li>
                     <li>.ly-fr: 右浮动</li>
-                    <li>.ly-wh100: 宽度均为100%</li>
-                    <li>.ly-wh100-b: 宽度均为100%的块级元素</li>
+                    <li>.ly-wh100: 宽高均为100%</li>
+                    <li>.ly-wh100-b: 宽高均为100%的块级元素</li>
                     <li>.img-responsive: 宽高自动，最大宽高不超过父元素的自适应图片</li>
                     <li>.img-responsive-w100: 高自动，最大宽不超过父元素的自适应图片</li>
                     <li>.img-responsive-h100: 宽自动，最大高不超过父元素的自适应图片</li>
+                    <li>.clearfix: after修复浮动问题</li>
+                    <li>.clearfixAll: 高强度修复浮动问题</li>
                     <li class="diy-line"></li>
                 </ul>
             </div>
@@ -154,55 +161,24 @@
             <h6>浅谈如何将元素垂直居中</h6>
             <div class="js-details">
                 <ul class="diy-list txt-h6">
-                    <li>一、元素父级为block</li>
-                    <li>
-                        <p>1.使用: { display:inline-block; vertical-align: middle; }</p>
-                        <ul class="diy-cen diy-cen-h">
-                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素一</li>
-                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素二</li>
-                            <li class="ly-cen-ib diy-cen diy-cen-h-el">元素三</li>
-                        </ul>
+                    <li><span class="txt-blod">父父级-父级-子集式 || 父级-子集式：</span>管他父级还是父父级，无固高不用管，有固高加行高</li>
+                    <li><span class="txt-blod">父父级-混合父级-混合子集式：</span>什么都别管，先给所有内联块级父子集加{ vertical-align: middle;
+                        }样式，还有不对齐的往他前面塞个高度100%的内联块级元素，并添加{ vertical-align: middle; }样式，完美。<span
+                            class="txt-blod diy-txt-red">在LayoutSimple中提供了这个样式，即前面【简单布局】中提到的.ly-ver-cen</span></li>
+                    <li></li>
+                    <li>PS：研究之余，发现一个兼容性问题，即当元素为inline时，IOS与除IE外的PC浏览器均显示正常，但是在安卓手机中如果你够仔细你会发现他有2px的padding-bottom，IE中有1px的padding-bottom。不信，你瞧瞧下面这个，坑了吧，当然了这个范围还是将就能够凑合吧，如果比较较真的呢，你就自己想想办法吧！
                     </li>
                     <li>
-                        <p>2.元素之前为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
-                        <div class="diy-cen diy-cen-h">
-                            <span class="diy-cen diy-cen-h-el">元素一</span>
-                            <span class="diy-cen diy-cen-h-el">元素二</span>
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素三</span>
+                        <div class="diy-cen-parent">
+                            <span class="diy-cen-child">IOS和IE外的PC浏览器查看正常</span>
+                        </div>
+                        <div class="diy-cen-parent">
+                            <span class="diy-cen-child" style="padding-top:2px">安卓手机查看正常</span>
+                        </div>
+                        <div class="diy-cen-parent">
+                            <span class="diy-cen-child" style="padding-top:1px">IE查看正常</span>
                         </div>
                     </li>
-                    <li>
-                        <p>3.元素之前与之后为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
-                        <div class="diy-cen diy-cen-h">
-                            <span class="diy-cen diy-cen-h-el">元素一</span>
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素二</span>
-                            <span class="diy-cen diy-cen-h-el">元素三</span>
-                        </div>
-                    </li>
-                    <li>
-                        <p>4.元素之后为inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
-                        <div class="diy-cen diy-cen-h">
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-el-h">元素一</span>
-                            <span class="diy-cen diy-cen-h-el">元素二</span>
-                            <span class="diy-cen diy-cen-h-el">元素三</span>
-                        </div>
-                    </li>
-                    <li>
-                        <p>5.元素中间穿插元素inline，使用: { display:inline-block; } 元素会自动垂直居中</p>
-                        <div class="diy-cen diy-cen-h">
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素一</span>
-                            <span class="diy-cen diy-cen-h-el">元素二</span>
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素三</span>
-                        </div>
-                    </li>
-                    <!-- <li>
-                        <p>3.元素为inline-block，父级为inline-block，自动垂直居中</p>
-                        <div class="diy-cen diy-cen-h">
-                            <span class="diy-cen diy-cen-h-el">元素一</span>
-                            <span class="diy-cen diy-cen-h-el diy-cen diy-cen-h-h">元素二</span>
-                            <span class="diy-cen diy-cen-h-el">元素三</span>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
         </div>
