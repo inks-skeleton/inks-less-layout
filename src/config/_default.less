@@ -16,9 +16,9 @@
 @default_h:auto; // 高度
 
 // 默认链接
-@default_linkC:#009; // :link 颜色
-@default_visitedC:#800080; // :visited 颜色
-@default_selected: { color: #c00; text-decoration: underline }; // :hover,:active,:focus 样式
+@default_linkC:#333; // :link 颜色
+@default_visitedC:#999; // :visited 颜色
+@default_selected: { color: #80b0fc; text-decoration: underline }; // :hover,:active,:focus 样式
 
 // 网格布局
 @screen_xl:1200px; // 1200以下
@@ -32,6 +32,23 @@
 @title_start_mobile: 26; // 移动端h6~h1起始字体大小
 @title_spacing:6; // h6~h1依次递增数
 
+// 主题色
+@col_main1:#2672fb; // 主色1
+@col_main2:#80b0fc; // 主色2
+@col_success:#8bc21f; // 安全提示色
+@col_warning:#FE9E4C; // 温馨提示色
+@col_danger:#FD6D6D; // 警告提示色
+
+// 主题字体颜色
+@col_text_primary:#333;
+@col_text_regular:#666;
+@col_text_secondary:#999;
+@col_text_placeholder:#ccc;
+@col_text_other:#fff;
+
+// 字体图标
+@icon_prefix:e('icon-cu'); // class前缀
+@icon_format:'truetype'; // 字体格式embedded-opentype | woff | svg
 
 // rem html 根字体适配
 @full_scale:720/100; // 满屏比例，默认值720/100，意为当屏幕为720px时html根字体大小应为100px

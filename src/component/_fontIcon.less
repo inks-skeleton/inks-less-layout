@@ -1,0 +1,34 @@
+// out:false,main: ../LayoutSimple.less
+// 字体图标
+
+// 此处请勿随意修改
+@customClass: e(%(".@{icon_prefix}"));
+.SetFontFace(@file, @format) {
+  @font-face { font-family: 'icomoon'; src:  url('./fonts/icomoon@{file}') format(@format); }
+}
+
+.IconFileIdent(@format) when (@format = 'embedded-opentype') { 
+  .SetFontFace(e('.eot?1y7giu#iefix'),@format);
+}
+.IconFileIdent(@format) when (@format = 'truetype') { 
+  .SetFontFace(e('.ttf?1y7giu'),@format);
+}
+.IconFileIdent(@format) when (@format = 'woff') { 
+  .SetFontFace(e('.woff?1y7giu'),@format);
+}
+.IconFileIdent(@format) when (@format = 'svg') { 
+  .SetFontFace(e('.svg?1y7giu#icomoon'),@format);
+}
+
+.IconFileIdent(@icon_format);
+
+[class^='@{icon_prefix}'], [class*='@{icon_prefix}'] { font-family: 'icomoon'; }
+
+.AddIcon(@name, @content) {
+  @{customClass}-@{name}:before {
+    content: @content;
+  }
+}
+
+// 图标增加请调用AddIcon Mixin
+.AddIcon(tip,'\e900');

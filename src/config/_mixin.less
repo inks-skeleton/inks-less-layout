@@ -1,14 +1,17 @@
 // out:false,main: ../LayoutSimple.less
 
 // ie9 and up [border-radius]
-@url: '../../../dist';
 .BorderR(@r) { border-radius: @r; -webkit-border-radius: @r; -moz-border-radius: @r; }
 
 // ie7 and up [display: inline-block]
 .InBlock() { display: inline-block; *zoom: 1; *display: inline; }
 .InBlock(@important) when (@important=true) { display: inline-block!important; *zoom: 1; *display: inline!important; }
 
+// 快速设置左右或上下padding margin
 .PaddingLR(@val) { padding-left: @val; padding-right: @val; }
 .PaddingTB(@val) { padding-top: @val; padding-bottom: @val; }
 .MarginLR(@val) { margin-left: @val; margin-right: @val; }
 .MarginTB(@val) { margin-top: @val; margin-bottom: @val; }
+
+// 适用于移动端，不兼容IE [多行超出显示省略号，@val为行数]
+.MultiLineEllipsis(@val) { display: -webkit-box; -webkit-line-clamp: @val; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden; }

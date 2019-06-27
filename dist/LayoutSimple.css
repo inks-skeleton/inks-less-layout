@@ -91,15 +91,15 @@ a {
   text-decoration: none;
 }
 a:link {
-  color: #009;
+  color: #333;
 }
 a:visited {
-  color: #800080;
+  color: #999;
 }
 a:hover,
 a:active,
 a:focus {
-  color: #c00;
+  color: #80b0fc;
   text-decoration: underline;
 }
 input,
@@ -206,12 +206,45 @@ h6 {
   text-align: right;
 }
 .txt-ellipsis {
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
+}
+.txt-Mellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .txt-nowrap {
   white-space: nowrap;
+}
+.txt-main {
+  color: #2672fb;
+}
+.txt-success {
+  color: #8bc21f;
+}
+.txt-danger {
+  color: #FD6D6D;
+}
+.txt-warning {
+  color: #FE9E4C;
+}
+.txt-other {
+  color: #fff;
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.ttf?1y7giu') format('truetype');
+}
+[class^='icon-cu'],
+[class*='icon-cu'] {
+  font-family: 'icomoon';
+}
+.icon-cu-tip:before {
+  content: '\e900';
 }
 .jumbotron {
   padding-left: 20px;
