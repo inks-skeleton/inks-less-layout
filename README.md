@@ -7,6 +7,7 @@
 - LayoutSimple 是一款简易的自由度极高的前端响应式布局 CSS 框架，项目使用 LESS 开发，含有一些实用的 LESS Mixin，如果对 LESS 有些功底的朋友可以自由发挥和组合。
 - 项目地址：[LayoutSimple v1.0.0](https://github.com/qc-web-y/LayoutSimple "LayoutSimple v1.0.0")
 - 适用人群：前端开发布局随意性较大，自由度需要很高的前端开发项目
+- LayoutSimple 已更新至 `v1.1.0` 但由于作者工作较忙，暂时没有时间写文档，懂less的凑合看吧，6月后更新文档
 
 ## 使用方法
 > [方法一：自由度较高，需要掌握有less功底]
