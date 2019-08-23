@@ -1,6 +1,10 @@
 // out:false,main: ../LayoutSimple.less
 
-@rem:100rem;
+// rem html 根字体适配
+@rem:100rem; // 根字体大小值，默认为100px
+@full_scale:720/@rem; // 满屏比例，默认值720/100，意为当屏幕为720px时html根字体大小应为100px
+@fit_spacing:20; // 适配间距，即每隔多少px进行一次适配
+@fit_range:960,320; // 适配范围，由于PC对rem的支持性不高，因此仅对960-360之间的移动端进行适配
 
 // 默认字体
 @default_fs:14px; // size
@@ -49,8 +53,3 @@
 // 字体图标
 @icon_prefix:e('icon-cu'); // class前缀
 @icon_format:'truetype'; // 字体格式embedded-opentype | woff | svg
-
-// rem html 根字体适配
-@full_scale:720/100; // 满屏比例，默认值720/100，意为当屏幕为720px时html根字体大小应为100px
-@fit_spacing:20; // 适配间距，即每隔多少px进行一次适配
-@fit_range:960,320; // 适配范围，由于PC对rem的支持性不高，因此仅对960-360之间的移动端进行适配

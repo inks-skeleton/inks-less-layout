@@ -1,0 +1,49 @@
+{
+  // 开启保存文件时自动根据eslint进行格式化
+  "eslint.autoFixOnSave": true,
+  // 开启对以下代码的eslint校验
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "css",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  "vetur.validation.template": false,
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force-aligned"
+    }
+  },
+
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.eslintIntegration": true,
+
+  "html.format.endWithNewline": true,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+
+  "editor.defaultFormatter": "octref.vetur",
+  "editor.formatOnSave": false,
+
+  "css.remoteStyleSheets": [
+    "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+  ],
+  "css.fileExtensions": ["css", "less", "vue"]
+}

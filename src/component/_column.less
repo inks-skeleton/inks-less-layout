@@ -1,11 +1,11 @@
 // out:false,main: ../LayoutSimple.less
 // 网格布局
 
-.Col(@i, @total) when (@i > 0) { .Col((@i - 1));
-  [class*= 'col-@{i}'] { &:extend(.ly-top-ib); width: unit(floor(100/@total * @i), e('%')); }
+.Col(@i, @total) when (@i > 0) { .Col((@i - 1),@total);
+  [class*= 'col-@{i}'] { &:extend(.ly-top-ib); width: percentage((100/@total * @i)/100); }
 }
-.Col(@i, @total, @type) when (@i > 0) { .Col((@i - 1),@type);
-  [class*= 'col-@{type}-@{i}'] { &:extend(.ly-top-ib); width: unit(floor(100/@total * @i), e('%')); }
+.Col(@i, @total, @type) when (@i > 0) { .Col((@i - 1),@total,@type);
+  [class*= 'col-@{type}-@{i}'] { &:extend(.ly-top-ib); width: percentage((100/@total * @i)/100); }
 }
 
 @grid: 12;
