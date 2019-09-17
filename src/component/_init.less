@@ -7,14 +7,10 @@ h1, h2, h3, h4, h5, h6,address, caption, cite, code, dfn, em, strong, th, var { 
 address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; }
 body, html { width: @default_w; min-width: @default_min_w; max-width: @default_max_w; height: @default_h; }
 body { background: @default_bg; }
-html {overflow-y: scroll;} 
+html {overflow-y: scroll;}
 ol,ul, li { list-style: none; }
 
-a { text-decoration: none; 
-    &:link{ color:@default_linkC; } 
-    &:visited{ color:@default_visitedC; } 
-    &:hover,&:active,&:focus{ @default_selected(); } 
-}
+a { text-decoration: none; }
 
 // 禁用ios点击链接或者带有执行js的btn等灰色透明效果
 input, button, select, textarea, a { -webkit-tap-highlight-color: rgba(0,0,0,0); }
@@ -31,4 +27,3 @@ input:disabled { -webkit-opacity: 1; }
 @Init960DownFit: {
     body,a,button,input,select,textarea,td,th,caption { font-size:@default_fs_mobile;}
 };
-

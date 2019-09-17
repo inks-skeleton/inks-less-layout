@@ -1,8 +1,5 @@
 // out:false,main: ../LayoutSimple.less
 
-// ie9 and up [border-radius]
-.BorderR(@r) { border-radius: @r; -webkit-border-radius: @r; -moz-border-radius: @r; }
-
 // ie7 and up [display: inline-block]
 .InBlock() { display: inline-block; *zoom: 1; *display: inline; }
 .InBlock(@important) when (@important=true) { display: inline-block!important; *zoom: 1; *display: inline!important; }
@@ -13,39 +10,38 @@
 .MarginLR(@val) { margin-left: @val; margin-right: @val; }
 .MarginTB(@val) { margin-top: @val; margin-bottom: @val; }
 
+// 快速设置圆角
+.radiusTLR(@val) { border-top-left-radius: @val; border-top-right-radius: @val; }
+.radiusBLR(@val) { border-bottom-left-radius: @val; border-bottom-right-radius: @val; }
+.radiusLTB(@val) { border-top-left-radius: @val; border-bottom-left-radius: @val; }
+.radiusRTB(@val) { border-top-right-radius: @val; border-bottom-right-radius: @val; }
+
 // 适用于移动端，不兼容IE [多行超出显示省略号，@val为行数]
 .MultiLineEllipsis(@val) { display: -webkit-box; -webkit-line-clamp: @val; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden; }
 
 .HeightHL(@val) { height: @val; line-height: @val; }
 .WHSame(@val) { width: @val; height: @val; }
+.WHLSame(@val) { width: @val; height: @val; line-height: @val; }
 .Insulate(@val) { .MarginTB(@val); width: 100%; height: 0.01px; }
 
 // 创建主题色彩样式
-.CreateExactMainCol(@colList, @colI, @type) when (@colI <= length(@colList)){
-  .CreateExactMainCol(@colList, @colI+1, @type);
-
-  @list:extract(@colList, @colI);
-  @col:extract(@list,1);
-  @colName:e(extract(@list,2));
-
-  .createStart(@t) when (@t = 't') {
-    // 创建辅助字体色
-    .txt-@{colName} { color: @col; }
+.createColCss(@colName, @col) {
+  .txt_@{colName} { color: @col; }
+}
+.createColCss(@colName, @col, @type) when (@type = 'tb') {
+  .txt_@{colName} { color: @col; }
+  .btn_@{colName} { background-color: @col; color: @col_text-other; text-align: center;
+    // &:hover,&:active { box-shadow: 0 5px 20px 2px rgba(255,255,255,0.7) inset; }
   }
-
-  .createStart(@t) when (@t = 'tb') {
-    // 创建主题字体色
-    .txt-@{colName} { color: @col; }
-
-    // 创建主题按钮色
-    .btn-@{colName} { background-color: @col; color:extract(@col_text_other,1); text-align: center;
-      // &:hover,&:active { box-shadow: 0 5px 20px 2px rgba(255,255,255,0.7) inset; }
-    }
-
-    // 创建主题色边框按钮
-    .btn-@{colName}-simple { border: 1px solid @col; border-radius:10px; color: @col; text-align: center;
-        // &:hover,&:active { box-shadow: 0 5px 20px 2px @col inset; }
-    }
+  .btn_@{colName}-simple { border: 1px solid @col; border-radius: 10px; color: @col; text-align: center;
+      // &:hover,&:active { box-shadow: 0 5px 20px 2px @col inset; }
   }
-  .createStart(@type)
+}
+
+// 字体图标生成
+@customClass: e(%(".@{icon_prefix}"));
+.AddIcon(@name, @content) {
+  @{customClass}-@{name}:before {
+    content: @content;
+  }
 }
