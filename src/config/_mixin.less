@@ -45,3 +45,65 @@
     content: @content;
   }
 }
+
+// 循环生成标题字号
+@end_h:1;
+.FontTitle(@start_fs, @unit, @spacing, @start_h:6) when (@start_h >= @end_h) {
+    @next_start_fs: @start_fs + @spacing;
+    @next_start_h: @start_h - 1;
+    .FontTitle(@next_start_fs, @unit, @spacing, @next_start_h);
+    .txt-h@{start_h},.txt-fs@{start_h} { font-size: @start_fs/@unit; }
+    .txt-h@{start_h} { .PaddingTB(@start_fs/2/@unit); }
+}
+
+// 边框颜色与背景宽度过渡式动画hover
+.hoverBgBorder (@n,@color,@unit:1px) {
+  .h-@{n} { .PaddingLR(10/@unit); position: relative; border: 1/@unit solid transparent;
+    &::after { content: ''; position: absolute; top: 0; left: 0; opacity: 0.3; width: 0; height: 100%; background-color: tint(@color,50%); }
+    &:hover,&:active { color: tint(@color,20%); border-color: tint(@color,50%);
+      &::after { transition: width 1s; width: 100%; }
+    }
+  }
+}
+
+// 边框颜色与背景宽度[背景字色高反差]过渡式动画hover
+.hoverBgBorder (@n, @color, @colorText, @unit:1px) {
+  .h-@{n} { position: relative; border: 1/@unit solid transparent;
+    &::after { content: ''; position: absolute; top: 0; left: 0; opacity: 0.3; width: 0; height: 100%; background-color: tint(@color,50%); }
+    &:hover,&:active { color: tint(@colorText,20%); border-color: tint(@color,50%);
+      &::after { transition: width 1s; width: 100%; }
+    }
+  }
+}
+
+// 下边线过渡式动画hover
+.hoverBorderB (@n,@color,@unit:1px) {
+  .h-@{n} { position: relative; padding-bottom: 2/@unit;
+    &::after { content: ''; position: absolute; bottom: 0; left: 0; opacity: 0; width: 0; height: 2/@unit; background-color: tint(@color,50%); }
+    &:hover,&:active {
+      &::after { transition: width 1s, opacity 1s; width: 100%; opacity: 0.5; }
+    }
+  }
+}
+
+// 图片边框缩放式hover
+.hoverImgScale (@n,@border:10px,@color:#fff) {
+  .h-@{n} { position: relative; overflow: hidden;
+    &::after { &:extend(.ly-box,.ly-wh100); content: ''; position: absolute; top: 0; left: 0; border: @border solid @color; opacity: 0; }
+    &:hover,&:active {
+      img { transform: scale(1.05); }
+      &::after { transition: opacity 1s; opacity: 0.5; }
+    }
+  }
+}
+
+// 图片下边框缩放式hover
+.hoverImgBScale (@n,@border:10px,@color:#fff) {
+  .h-@{n} { position: relative; overflow: hidden;
+    &::after { content: ''; position: absolute; bottom: -@border; left: 0; width: 100%; height: @border; background-color: @color; opacity: 0; }
+    &:hover,&:active {
+      img { transform: scale(1.05); }
+      &::after { transition: bottom 1s, opacity 1s; opacity: 0.5; bottom: 0; }
+    }
+  }
+}

@@ -2,7 +2,7 @@
 // 布局样式
 
 .jumbotron { .PaddingLR(20px); }
-.container { &:extend(.ly-box); margin: 0 auto; width: 1200px; height: auto; }
+.container { &:extend(.ly-box); margin: 0 auto; width: @main_max_w; height: auto; }
 
 @PageLayout1200DownFit: {
     .container { .PaddingLR(20px); width:100%; }
@@ -21,7 +21,10 @@
 .ly-fr { float:right; }
 .ly-wh100 { width: 100%; height: 100%; }
 .ly-wh100-b { display: block; &:extend(.u-wh100);}
-.ly-flex-cen { display: flex; justify-content:center; align-items:center; }
+.ly-flex { display: flex; align-items:center; }
+.ly-flex-cen { &:extend(.ly-flex); justify-content:center;  }
+.ly-flex-between { &:extend(.ly-flex); justify-content:space-between; }
+.ly-flex-around { &:extend(.ly-flex); justify-content:space-around; }
 .ly-full-loc { position: fixed; left: 0; width: 100%; }
 .ly-cen-wrap { margin: 0 auto; width: 100%; min-width: @default_min_w; max-width: @default_max_w; }
 .ly-vihide { visibility: hidden; }

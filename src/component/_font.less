@@ -1,26 +1,17 @@
 // out: false, main: ../LayoutSimple.less
 // 字体样式
-
-@end_h:1;
-.FontTitle(@start_fs, @unit, @start_h:6) when ((@unit = px) and (@start_h >= @end_h)) {
-    .FontTitle(@start_fs + @title_spacing, @unit, @start_h - 1);
-    h@{start_h} { .PaddingTB(@start_fs - 10px); font-size: unit(@start_fs,@unit); line-height: unit(@start_fs*1.6,@unit); }
-    .txt-h@{start_h} { font-size: unit(@start_fs,@unit); }
-}
-.FontTitle(@start_fs, @unit, @start_h:6) when ((@unit = rem) and (@start_h >= @end_h)) {
-    .FontTitle(@start_fs + @title_spacing, @unit, @start_h - 1);
-    h@{start_h} { .PaddingTB(@start_fs/@rem); font-size: @start_fs/@rem; line-height: @start_fs*1.6/@rem; }
-    .txt-h@{start_h} { font-size: @start_fs/@rem; }
-}
-
-.FontTitle(@title_start,px);
-.txt-samll {font-size: 12px;}
-.txt-mini {font-size: 10px;}
+.FontTitle(@title_start,1px,@title_spacing);
+.txt-big { font-size: @default_fs + 2; }
+.txt-default { font-size: @default_fs; }
+.txt-small { font-size: @default_fs - 2; }
+.txt-mini { font-size: @default_fs - 4; }
 
 @FontH960DownFit: {
-    .FontTitle(@title_start_mobile,rem);
-    .txt-samll {font-size: 24/@rem;}
-    .txt-mini {font-size: 22/@rem;}
+  .FontTitle(@title_start,@rem,@title_start_mobile);
+  .txt-big { font-size: @default_fs_mobile + 2/@rem; }
+  .txt-default { font-size: @default_fs_mobile; }
+  .txt-small { font-size: @default_fs_mobile - 2/@rem; }
+  .txt-mini { font-size: @default_fs_mobile - 4/@rem; }
 };
 
 .txt-blod { font-weight: bold; }
