@@ -11,10 +11,10 @@
 .MarginTB(@val) { margin-top: @val; margin-bottom: @val; }
 
 // 快速设置圆角
-.radiusTLR(@val) { border-top-left-radius: @val; border-top-right-radius: @val; }
-.radiusBLR(@val) { border-bottom-left-radius: @val; border-bottom-right-radius: @val; }
-.radiusLTB(@val) { border-top-left-radius: @val; border-bottom-left-radius: @val; }
-.radiusRTB(@val) { border-top-right-radius: @val; border-bottom-right-radius: @val; }
+.RadiusTLR(@val) { border-top-left-radius: @val; border-top-right-radius: @val; }
+.RadiusBLR(@val) { border-bottom-left-radius: @val; border-bottom-right-radius: @val; }
+.RadiusLTB(@val) { border-top-left-radius: @val; border-bottom-left-radius: @val; }
+.RadiusRTB(@val) { border-top-right-radius: @val; border-bottom-right-radius: @val; }
 
 // 适用于移动端，不兼容IE [多行超出显示省略号，@val为行数]
 .MultiLineEllipsis(@val) { display: -webkit-box; -webkit-line-clamp: @val; -webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden; }
@@ -25,17 +25,21 @@
 .Insulate(@val) { .MarginTB(@val); width: 100%; height: 0.01px; }
 
 // 创建主题色彩样式
-.createColCss(@colName, @col) {
+.CreateColCss(@colName, @col) {
   .txt_@{colName} { color: @col; }
 }
-.createColCss(@colName, @col, @type) when (@type = 'tb') {
+.CreateColCss(@colName, @col, @type, @calc:30%) {
   .txt_@{colName} { color: @col; }
-  .btn_@{colName} { background-color: @col; color: @col_text-other; text-align: center;
-    // &:hover,&:active { box-shadow: 0 5px 20px 2px rgba(255,255,255,0.7) inset; }
+  .btn_@{colName} { background-color: @col; text-align: center; }
+  .btn_@{colName}-simple { border: 1px solid @col; border-radius: 10px; color: @col; text-align: center; }
+
+  #BtnCreate(@t) when (@t = lighten) {
+    .btn_@{colName} { color: lighten(@col,@calc); }
   }
-  .btn_@{colName}-simple { border: 1px solid @col; border-radius: 10px; color: @col; text-align: center;
-      // &:hover,&:active { box-shadow: 0 5px 20px 2px @col inset; }
+  #BtnCreate(@t) when (@t = darken) {
+    .btn_@{colName} { color: darken(@col,@calc); }
   }
+  #BtnCreate(@type)
 }
 
 // 字体图标生成
@@ -57,7 +61,7 @@
 }
 
 // 边框颜色与背景宽度过渡式动画hover
-.hoverBgBorder (@n,@color,@unit:1px) {
+.HoverBgBorder (@n,@color,@unit:1px) {
   .h-@{n} { .PaddingLR(10/@unit); position: relative; border: 1/@unit solid transparent;
     &::after { content: ''; position: absolute; top: 0; left: 0; opacity: 0.3; width: 0; height: 100%; background-color: tint(@color,50%); }
     &:hover,&:active { color: tint(@color,20%); border-color: tint(@color,50%);
@@ -67,7 +71,7 @@
 }
 
 // 边框颜色与背景宽度[背景字色高反差]过渡式动画hover
-.hoverBgBorder (@n, @color, @colorText, @unit:1px) {
+.HoverBgBorder (@n, @color, @colorText, @unit:1px) {
   .h-@{n} { position: relative; border: 1/@unit solid transparent;
     &::after { content: ''; position: absolute; top: 0; left: 0; opacity: 0.3; width: 0; height: 100%; background-color: tint(@color,50%); }
     &:hover,&:active { color: tint(@colorText,20%); border-color: tint(@color,50%);
@@ -77,7 +81,7 @@
 }
 
 // 下边线过渡式动画hover
-.hoverBorderB (@n,@color,@unit:1px) {
+.HoverBorderB (@n,@color,@unit:1px) {
   .h-@{n} { position: relative; padding-bottom: 2/@unit;
     &::after { content: ''; position: absolute; bottom: 0; left: 0; opacity: 0; width: 0; height: 2/@unit; background-color: tint(@color,50%); }
     &:hover,&:active {
@@ -87,7 +91,7 @@
 }
 
 // 图片边框缩放式hover
-.hoverImgScale (@n,@border:10px,@color:#fff) {
+.HoverImgScale (@n,@border:10px,@color:#fff) {
   .h-@{n} { position: relative; overflow: hidden;
     &::after { &:extend(.ly-box,.ly-wh100); content: ''; position: absolute; top: 0; left: 0; border: @border solid @color; opacity: 0; }
     &:hover,&:active {
@@ -98,7 +102,7 @@
 }
 
 // 图片下边框缩放式hover
-.hoverImgBScale (@n,@border:10px,@color:#fff) {
+.HoverImgBScale (@n,@border:10px,@color:#fff) {
   .h-@{n} { position: relative; overflow: hidden;
     &::after { content: ''; position: absolute; bottom: -@border; left: 0; width: 100%; height: @border; background-color: @color; opacity: 0; }
     &:hover,&:active {

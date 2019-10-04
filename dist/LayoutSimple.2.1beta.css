@@ -3,7 +3,6 @@
 }
 .btn_main1 {
   background-color: #2672fb;
-  color: #fff;
   text-align: center;
 }
 .btn_main1-simple {
@@ -12,12 +11,14 @@
   color: #2672fb;
   text-align: center;
 }
+.btn_main1 {
+  color: #bcd4fe;
+}
 .txt_main2 {
   color: #80b0fc;
 }
 .btn_main2 {
   background-color: #80b0fc;
-  color: #fff;
   text-align: center;
 }
 .btn_main2-simple {
@@ -26,12 +27,14 @@
   color: #80b0fc;
   text-align: center;
 }
+.btn_main2 {
+  color: #ffffff;
+}
 .txt_tip-success {
   color: #8bc21f;
 }
 .btn_tip-success {
   background-color: #8bc21f;
-  color: #fff;
   text-align: center;
 }
 .btn_tip-success-simple {
@@ -40,12 +43,14 @@
   color: #8bc21f;
   text-align: center;
 }
+.btn_tip-success {
+  color: #cded8d;
+}
 .txt_tip-warning {
   color: #FE9E4C;
 }
 .btn_tip-warning {
   background-color: #FE9E4C;
-  color: #fff;
   text-align: center;
 }
 .btn_tip-warning-simple {
@@ -54,12 +59,14 @@
   color: #FE9E4C;
   text-align: center;
 }
+.btn_tip-warning {
+  color: #fff0e4;
+}
 .txt_tip-danger {
   color: #FD6D6D;
 }
 .btn_tip-danger {
   background-color: #FD6D6D;
-  color: #fff;
   text-align: center;
 }
 .btn_tip-danger-simple {
@@ -67,6 +74,9 @@
   border-radius: 10px;
   color: #FD6D6D;
   text-align: center;
+}
+.btn_tip-danger {
+  color: #ffffff;
 }
 .txt_normal {
   color: #333;
