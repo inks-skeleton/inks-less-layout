@@ -1,15 +1,14 @@
-// out: ../dist/LayoutSimple.2.1beta.css,compress:false
-// out: ../dist/LayoutSimple.2.1beta.min.css,compress:true
+@config:'./config';
+@import '@{config}/index.less';
+@import '@{config}/mixin.less';
 
-@config:'config/';
-@import '@{config}_default.less';
-@import '@{config}_mixin.less';
-@import '@{config}_theme.less';
+@lib:'./lib';
+@import '@{lib}/init.less';
+@import '@{lib}/font.less';
+@import '@{lib}/layout.less';
+@import '@{lib}/column.less';
+@import '@{lib}/fit.less';
+@import '@{lib}/iconfont/index.less';
 
-@component:'component/';
-@import '@{component}_init.less';
-@import '@{component}_font.less';
-@import '@{component}_fontIcon.less';
-@import '@{component}_layout.less';
-@import '@{component}_column.less';
-@import '@{component}_fit.less';
+@theme:'./theme';
+@import '@{theme}/index.less';

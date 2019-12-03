@@ -1,6 +1,4 @@
-// out:false,main: ../LayoutSimple.less
 // 网格布局
-
 .Col(@i, @total) when (@i > 0) { .Col((@i - 1),@total);
   [class*= 'col-@{i}'] { &:extend(.ly-top-ib); width: percentage((100/@total * @i)/100); }
 }
@@ -18,7 +16,7 @@
 }
 .hidden { display: none; }
 .visible { display: block; }
-.visible-ib { .InBlock(true); }
+.visible-ib { display: inline-block!important; }
 .visible-inline { display: inline; }
 
 .ColMedia(@w, @type) {
@@ -26,7 +24,7 @@
     .row { .Col(@grid, @grid, @type); }
     .hidden-@{type} { display: none!important;}
     .visible-@{type} { display: block!important; }
-    .visible-ib-@{type} { .InBlock(true); }
+    .visible-ib-@{type} { display: inline-block!important; }
     .visible-inline-@{type} { display: inline; }
   }
 }

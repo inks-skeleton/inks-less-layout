@@ -1,5 +1,3 @@
-// out:false,main: ../LayoutSimple.less
-
 // rem html 根字体适配
 @rem:100rem; // 根字体大小值，默认为100px
 @full_scale:720/@rem; // 满屏比例，默认值720/100，意为当屏幕为720px时html根字体大小应为100px
@@ -7,10 +5,10 @@
 @fit_range:960,320; // 适配范围，由于PC对rem的支持性不高，因此仅对960-360之间的移动端进行适配
 
 // 默认字体
-@default_fs:14px; // size
-@default_fs_mobile:24/@rem; // 移动端size
-@default_fc:#000;  // color
-@default_ffamily: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif; // family
+@default_fs:14px; // PC端字体大小
+@default_fs_mobile:24/@rem; // 移动端字体大小
+@default_fc:#000;  // 默认字体颜色
+@default_ffamily: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif; // 默认字体family
 
 // 默认body，html
 @default_bg:#fff; // body背景
@@ -19,7 +17,7 @@
 @default_max_w:auto; // 最大宽度
 @default_h:auto; // 高度
 
-@main_max_w: 1200px; // 主要内容最大宽度
+@main_max_w: 1200px; // 主要内容最大宽度，针对PC使用
 
 // 网格布局
 @screen_xl:1200px; // 1200以下
@@ -34,5 +32,5 @@
 @title_spacing:6; // h6~h1依次递增数
 
 // 字体图标
-@fileUrl:'../fonts/icomoon'; // 文件路径
-@icon_prefix:e('icon'); // class前缀
+@fileUrl:'../fonts/icomoon'; // 字体图标文件路径
+@icon_prefix:e('icon'); // 字体图标class前缀
