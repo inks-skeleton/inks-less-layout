@@ -58,12 +58,12 @@
     "web",
     "layout-simple"
   ],
-  "homepage": "https://github.com/qc-web-y/LayoutSimple#readme",
+  "homepage": "https://github.com/qc-web-y/layout-simple",
   "repository": {
     "type": "git",
-    "url": "https://github.com/qc-web-y/LayoutSimple.git"
+    "url": "https://github.com/qc-web-y/layout-simple.git"
   },
   "bugs": {
-    "url": "https://github.com/qc-web-y/LayoutSimple/issues"
+    "url": "https://github.com/qc-web-y/layout-simple/issues"
   }
 }

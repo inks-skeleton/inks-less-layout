@@ -8,7 +8,7 @@
 
 ### Gulp Plugin
 
-[gulp 插件: gulp-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
+[gulp-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
 
 > `npm i gulp-layout-simple`
 
@@ -29,7 +29,7 @@ gulp.task('layout-simple', () => {
 
 ### Webpack Loader
 
-[webpack loader: webpack-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
+[layout-simple-loader](https://www.npmjs.com/package/layout-simple-loader)
 
 > `npm i layout-simple-loader`
 
