@@ -4,21 +4,19 @@
 - 适用人群：前端开发布局随意性较大、已经存在设计稿件、仅需要简单的初始化与布局等基础样式、自由度需要很高的前端开发项目
 - `layout-simple` 已迭代更新至 `v2.0.0` ，新版弃用部分 `class` 命名，没有进行向下兼容，所以老项目升级请谨慎操作
 
-## Plugin
-
-- [gulp 插件: gulp-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
-- [webpack loader: webpack-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
-
 ## Usage
 
-- `gulp` 插件
-- `npm i gulp-layout-simple`
+### Gulp Plugin
+
+[gulp 插件: gulp-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
+
+> `npm i gulp-layout-simple`
 
 ```
 gulp.task('layout-simple', () => {
   return gulp
     .src('./src/**/*.less')
-    .pipe(gulpLayoutSimple({ // ...options }))
+    .pipe(gulpLayoutSimple({ // options... }))
     .pipe(
       gulpLess({
         plugins: [autoprefix]
@@ -29,12 +27,75 @@ gulp.task('layout-simple', () => {
 })
 ```
 
-- `webpack` loader
-- `npm i webpack-layout-simple`
+### Webpack Loader
+
+[webpack loader: webpack-layout-simple](https://www.npmjs.com/package/gulp-layout-simple)
+
+> `npm i layout-simple-loader`
+
+- `webpack.config.js`
+
+```
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WebpackLayoutSimpleLoader = require('layout-simple-loader')
+const entry = './src/index.js'
+module.exports = () => {
+  const lsLoader = new WebpackLayoutSimpleLoader({ entry, // other options... })
+  /**
+   * lsLoader.loaderName 字符串，loader名称
+   * lsLoader.loaderLess 字符串，生成布局框架less的路径
+   * lsLoader.loaderRemJs 字符串，生成布局框架rem适配js路径
+   * lsLoader.loaderOptions 异步函数，生成布局框架less loader options对象
+   */
+  return new Promise(resolve => {
+    lsLoader.loaderOptions().then(lsOptions => {
+      resolve({
+        mode: 'production',
+        entry: entry,
+        output: {
+          path: './dist',
+          filename: 'index.js'
+        },
+        module: {
+          rules: [
+            {
+              test: /\.less$/,
+              exclude: /node_modules/,
+              use: [
+                'style-loader',
+                'css-loader',
+                'less-loader',
+                {
+                  loader: lsLoader.loaderLess,
+                  options: lsOptions
+                }
+              ]
+            }
+          ]
+        },
+        plugins: [
+          new CleanWebpackPlugin(),
+          new HtmlWebpackPlugin({
+            title: 'layout simple loader test',
+            template: './public/index.html'
+          })
+        ]
+      })
+    })
+  })
+}
+```
 
 ## Options
 
 > 参数类型带有 `?` 表示为可选参数，`number[]` 表示数字数组，`string[]` 表示字符串数组
+
+- `entry`
+
+  - 类型: string
+  - 默认: 无
+  - 描述: webpack loader 专用，打包入口文件，用于将生成的 less 与 js 框架文件自动注入到入口文件中
 
 - `fileName`
 
