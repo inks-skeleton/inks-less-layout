@@ -1,49 +1,39 @@
-// 引入npm资源
-const fs = require('fs')
+// LayoutSimple gulp 插件测试
 const path = require('path')
-const gulp = require('gulp')
-const gulpRename = require('gulp-rename')
-const gulpLess = require('gulp-less')
-const lessAutoprefix = require('less-plugin-autoprefix')
-const gulpMinifyCSS = require('gulp-minify-css')
 const del = require('del')
-const package = JSON.parse(fs.readFileSync('./package.json'))
+const gulp = require('gulp')
+const gulpLess = require('gulp-less')
+const gulpMinifyCSS = require('gulp-minify-css')
+const LessAutoprefix = require('less-plugin-autoprefix')
+const GulpLayoutSimple = require('./packages/gulp/index')
 
-const autoprefix = new lessAutoprefix({ browsers: ['last 2 versions'] })
-const outFile = path.join(__dirname, 'dist')
-const devLess = path.join(__dirname, 'src/LayoutSimple.less')
+const outUrl = path.join(__dirname, 'demo/dist_gulp')
+const autoprefix = new LessAutoprefix({
+  browsers: ['last 2 versions']
+})
+const layoutsimple = new GulpLayoutSimple()
 
-// 清理输出文件夹
-gulp.task('clean-dist', (done) => {
-	return del([outFile], done)
+gulp.task('clean', done => {
+  return del([outUrl], done)
 })
 
-// 编译less样式为css
-gulp.task('less2css', () => {
-	return gulp
-		.src(devLess)
-		.pipe(gulpLess({
-      plugins: [autoprefix]
-    }))
-    .pipe(gulpRename((path) => {
-			path.basename += '.' + package.version
-		}))
-		.pipe(gulp.dest(outFile))
-});
-
-// 编译less样式为min.css
-gulp.task('less2mincss', () => {
-	return gulp
-		.src(devLess)
-		.pipe(gulpLess({
-      plugins: [lessAutoprefix]
-    }))
-		.pipe(gulpMinifyCSS())
-		.pipe(gulpRename((path) => {
-			path.basename += '.' + package.version + '.min'
-		}))
-		.pipe(gulp.dest(outFile))
+gulp.task('lsLess', () => {
+  return gulp
+    .src('./test/less/**/*.less')
+    .pipe(layoutsimple.createLess())
+    .pipe(
+      gulpLess({
+        plugins: [autoprefix]
+      })
+    )
+    .pipe(gulpMinifyCSS())
+    .pipe(gulp.dest(outUrl))
 })
 
-// 打包
-gulp.task('build', gulp.series('clean-dist', gulp.parallel('less2css', 'less2mincss')))
+gulp.task('lsJs', () => {
+  return gulp
+    .src('./test/js/**/*.js')
+    .pipe(layoutsimple.adaptation())
+    .pipe(gulp.dest(outUrl))
+})
+gulp.task('default', gulp.series('clean', gulp.parallel('lsLess', 'lsJs')))
