@@ -22,4 +22,4 @@ function loaderApi(this: webpack.loader.LoaderContext, contents: string) {
   if (callback) callback(null, importLS + dealUnitRes)
 }
 
-module.exports = loaderApi
+export default loaderApi

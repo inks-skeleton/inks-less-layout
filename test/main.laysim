@@ -1,0 +1,3 @@
+module.exports = {
+  fileName: 'test-layout-simple'
+}

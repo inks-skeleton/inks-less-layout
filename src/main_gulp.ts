@@ -4,7 +4,7 @@ import tmp from 'tmp'
 import through2 from 'through2'
 import gulpUtil from 'gulp-util'
 
-import DefaultLSConfig from './lsconfig'
+import DefaultLSConfig from './laysim.config'
 import { LSConfig, LSGridLayout, LSClient } from './lib/config'
 import CreateTheme from './lib/theme'
 import CreateInitStyle from './lib/initStyle'
@@ -93,7 +93,7 @@ class GulpLayoutSimple {
     const options = this.options
     const lessName = options.fileName + '.less'
     const stream = through2
-      .obj(function(file, encoding, cb) {
+      .obj(function (file, encoding, cb) {
         if (file.isNull()) return cb(null, file)
 
         // 添加处理完毕的layout-simple.less到输出文件列表
@@ -134,7 +134,7 @@ class GulpLayoutSimple {
     const jsName = this.options.fileName + '.js'
     if (!mobile) return
     const resultJs: string = adaptation(<LSClient.Mobile>mobile)
-    const stream = through2.obj(function(file, encoding, cb) {
+    const stream = through2.obj(function (file, encoding, cb) {
       if (!_this.resultJsFile && file.path !== jsName) {
         _this.resultJsFile = new gulpUtil.File({
           path: jsName,

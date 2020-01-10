@@ -1,16 +1,21 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin')
 const BuildConfigPlugin = require('./plugin/build.config')
 const common = require('./webpack.common.js')
 
 const MODE_TYPE = process.env.MODE_TYPE
 const entry = {
-  gulp: { index: './src/main_gulp.ts' },
+  gulp: {
+    index: './src/main_gulp.ts'
+  },
   loader: {
     index: './src/main_loader.ts',
-    loaderLess: './src/loader/index.ts'
+    loaderLess: './src/loader/less.ts'
+    // loaderLaysim: './src/loader/laysim.ts'
   }
 }
 const output = path.resolve(__dirname, '../packages/' + MODE_TYPE)
@@ -29,7 +34,9 @@ module.exports = merge(common, {
   },
   target: 'node',
   plugins: [
-    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: output }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: output
+    }),
     new BuildConfigPlugin(output),
     new CopyWebpackPlugin(copyFile)
   ]
