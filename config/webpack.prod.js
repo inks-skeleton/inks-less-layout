@@ -15,7 +15,6 @@ const entry = {
   loader: {
     index: './src/main_loader.ts',
     loaderLess: './src/loader/less.ts'
-    // loaderLaysim: './src/loader/laysim.ts'
   }
 }
 const output = path.resolve(__dirname, '../packages/' + MODE_TYPE)
