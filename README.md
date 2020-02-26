@@ -13,19 +13,32 @@
 > `npm i gulp-layout-simple`
 
 ```
-gulp.task('layout-simple', () => {
+const GulpLayoutSimple = require("gulp-layout-simple")
+const layoutsimple = new GulpLayoutSimple()
+gulp.task("lsLess", () => {
+  return (
+    gulp
+      .src("./test/less/**/*.less")
+      .pipe(layoutsimple.createLess())
+      .pipe(
+        gulpLess({
+          plugins: [autoprefix]
+        })
+      )
+      .pipe(gulpMinifyCSS())
+      .pipe(gulp.dest(outUrl))
+  );
+});
+
+gulp.task("lsJs", () => {
   return gulp
-    .src('./src/**/*.less')
-    .pipe(gulpLayoutSimple({ // options... }))
-    .pipe(
-      gulpLess({
-        plugins: [autoprefix]
-      })
-    )
-    .pipe(gulpMinifyCSS())
-    .pipe(gulp.dest('./dist/'))
-})
+    .src("./test/js/**/*.js")
+    .pipe(layoutsimple.adaptation())
+    .pipe(gulp.dest(outUrl));
+});
+gulp.task("default", gulp.parallel("lsLess", "lsJs"));
 ```
+完整demo参见项目``gulpfile.js``
 
 ### Webpack Loader
 
