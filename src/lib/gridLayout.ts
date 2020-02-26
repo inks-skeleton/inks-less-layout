@@ -36,6 +36,7 @@ class CreateGridLayout {
       const val = Reflect.get(screenSize, k)
       this.resultCss += `@media (max-width:${val}px) {\r\n`
       this.resultCss += `.hidden-${k}{display: none;}\r\n`
+      this.resultCss += `.visible-${k}{display: block;}\r\n`
       this.resultCss += `.visible-ib-${k}{display: inline-block;}\r\n`
       this.resultCss += `.visible-il-${k}{display: inline;}\r\n`
       for (var i = 1; i <= gridNum; i++) {

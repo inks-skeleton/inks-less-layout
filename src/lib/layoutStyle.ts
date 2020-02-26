@@ -23,7 +23,7 @@ class CreateLayoutStyle {
       this.resultCss += `.ly-cen-wrap{margin:0 auto;width:100%;min-width:${minWidth};max-width:${maxWidth};}\r\n`
     }
     if (mainContentWidth) {
-      this.resultCss = `.container{box-sizing:border-box;margin:0 auto;width:${mainContentWidth};}\r\n`
+      this.resultCss = `.container{box-sizing:border-box;margin:0 auto;width:${mainContentWidth}px;}\r\n`
     }
 
     if (pcElSpace && pcElSpace.length > 0) {

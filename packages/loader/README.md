@@ -38,52 +38,47 @@ gulp.task('layout-simple', () => {
 ```
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const WebpackLayoutSimpleLoader = require('layout-simple-loader')
-const entry = './src/index.js'
-module.exports = () => {
-  const lsLoader = new WebpackLayoutSimpleLoader({ entry, // other options... })
-  /**
-   * lsLoader.loaderName 字符串，loader名称
-   * lsLoader.loaderLess 字符串，生成布局框架less的路径
-   * lsLoader.loaderRemJs 字符串，生成布局框架rem适配js路径
-   * lsLoader.loaderOptions 异步函数，生成布局框架less loader options对象
-   */
-  return new Promise(resolve => {
-    lsLoader.loaderOptions().then(lsOptions => {
-      resolve({
-        mode: 'production',
-        entry: entry,
-        output: {
-          path: './dist',
-          filename: 'index.js'
-        },
-        module: {
-          rules: [
-            {
-              test: /\.less$/,
-              exclude: /node_modules/,
-              use: [
-                'style-loader',
-                'css-loader',
-                'less-loader',
-                {
-                  loader: lsLoader.loaderLess,
-                  options: lsOptions
-                }
-              ]
-            }
-          ]
-        },
-        plugins: [
-          new CleanWebpackPlugin(),
-          new HtmlWebpackPlugin({
-            title: 'layout simple loader test',
-            template: './public/index.html'
-          })
+const WebpackLayoutSimple = require('layout-simple-loader')
+
+const layoutSimple = new WebpackLayoutSimple({ entry, // other options... })
+/**
+ * layoutSimple.loaderLess 字符串，生成布局框架less loader js路径
+ * layoutSimple.lessPath 字符串，生成布局框架less路径
+ * layoutSimple.remJsPath 字符串，生成布局框架rem适配js路径
+ * layoutSimple.options 生成布局框架less loader options对象
+ */
+
+module.exports = {
+  mode: 'production',
+  entry: [layoutSimple.lessPath, layoutSimple.remJsPath, './src/index.js'],
+  output: {
+    path: './dist',
+    filename: 'index.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+          {
+            loader: layoutSimple.loaderLess,
+            options: layoutSimple.options
+          }
         ]
-      })
+      }
+    ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'layout simple loader test',
+      template: './public/index.html'
     })
-  })
+  ]
 }
 ```
 

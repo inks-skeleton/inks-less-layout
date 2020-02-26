@@ -3,6 +3,7 @@ import path from 'path'
 import tmp from 'tmp'
 import through2 from 'through2'
 import gulpUtil from 'gulp-util'
+import merge from 'merge-objects'
 
 import DefaultLSConfig from './laysim.config'
 import { LSConfig, LSGridLayout, LSClient } from './lib/config'
@@ -12,7 +13,7 @@ import CreateGridLayout from './lib/gridLayout'
 import CreateFontStyle from './lib/fontStyle'
 import CreateLayoutStyle from './lib/layoutStyle'
 import pcToMobile from './lib/pc2Mobile'
-import adaptation from './lib/adaptation'
+import adaptationJs from './lib/adaptation'
 
 class GulpLayoutSimple {
   options: LSConfig
@@ -21,7 +22,7 @@ class GulpLayoutSimple {
   resultLessFile?: gulpUtil.File.BufferFile
   resultJsFile?: gulpUtil.File.BufferFile
   constructor(options?: LSConfig) {
-    this.options = Object.assign({}, DefaultLSConfig, options || {})
+    this.options = merge(DefaultLSConfig, options || {})
     this.pluginName = 'gulp-layout-simple'
   }
   createLS(): gulpUtil.File.BufferFile {
@@ -93,7 +94,7 @@ class GulpLayoutSimple {
     const options = this.options
     const lessName = options.fileName + '.less'
     const stream = through2
-      .obj(function (file, encoding, cb) {
+      .obj(function(file, encoding, cb) {
         if (file.isNull()) return cb(null, file)
 
         // 添加处理完毕的layout-simple.less到输出文件列表
@@ -133,8 +134,8 @@ class GulpLayoutSimple {
     const mobile = this.options.mobile
     const jsName = this.options.fileName + '.js'
     if (!mobile) return
-    const resultJs: string = adaptation(<LSClient.Mobile>mobile)
-    const stream = through2.obj(function (file, encoding, cb) {
+    const resultJs: string = adaptationJs(<LSClient.Mobile>mobile)
+    const stream = through2.obj(function(file, encoding, cb) {
       if (!_this.resultJsFile && file.path !== jsName) {
         _this.resultJsFile = new gulpUtil.File({
           path: jsName,

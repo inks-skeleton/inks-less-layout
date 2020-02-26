@@ -13,10 +13,11 @@
   "author": "YanEr",
   "license": "ISC",
   "dependencies": {
-    "tmp": "^0.1.0",
-    "through2": "^3.0.1",
     "gulp-util": "^3.0.8",
     "loader-utils": "^1.2.3",
+    "merge-objects": "^1.0.5",
+    "through2": "^3.0.1",
+    "tmp": "^0.1.0",
     "webpack": "^4.41.4"
   },
   "devDependencies": {
@@ -24,12 +25,14 @@
     "@babel/preset-env": "^7.7.7",
     "@types/gulp-util": "^3.0.34",
     "@types/loader-utils": "^1.1.3",
+    "@types/merge-objects": "^1.0.0",
     "@types/node": "^13.1.0",
     "@types/request": "^2.48.4",
     "@types/tapable": "^1.0.4",
     "@types/through2": "^2.0.34",
     "@types/tmp": "^0.1.0",
     "@types/webpack": "^4.41.1",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",

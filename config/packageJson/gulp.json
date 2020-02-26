@@ -1,6 +1,6 @@
 {
   "name": "gulp-layout-simple",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "gulp-layout-simple是一个gulp插件，layout-simple是为web前端响应式布局而生的CSS布局框架，基于LESS开发，可实现灵活配置、自动生成符合需求的布局框架、自动LESS变量、可用于PC、Mobile或响应式布局等web开发。",
   "dependencies": {
     "tmp": "^0.1.0",

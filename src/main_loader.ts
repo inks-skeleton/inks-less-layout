@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import merge from "merge-objects"
 
 import DefaultLSConfig from './laysim.config'
 import { LSConfig, LSGridLayout, LSClient } from './lib/config'
@@ -21,7 +22,7 @@ class WebpackLayoutSimple {
   lessPath: string
   remJsPath: string | void
   constructor(options: LSConfig) {
-    this.options = Object.assign({}, DefaultLSConfig, options || {})
+    this.options = merge(DefaultLSConfig, options || {})
     this.loaderLess = path.join(__dirname, './loaderLess.js')
     this.options.lessPath = this.lessPath = this.createLess()
     this.options.remJsPath = this.remJsPath = this.createRemJs() || undefined
